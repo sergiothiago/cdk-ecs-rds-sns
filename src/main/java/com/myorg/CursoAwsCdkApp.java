@@ -26,6 +26,8 @@ public class CursoAwsCdkApp {
         RdsStack rdsStack = new RdsStack(app, "Rds", vpcStack.getVpc());
         rdsStack.addDependency(vpcStack);
 
+        SnsStack snsStack = new SnsStack(app, "Sns");
+
         // SERVIÇO ECS COM FARGATE + AUTOSCALING 2 PODS INICIAIS PODENDO AUOMENTAR ATÉ 4.
         Service01Stack service01Stack = new Service01Stack(app, "Service01", clusterAwsCdkStack.getCluster());
         service01Stack.addDependency(clusterAwsCdkStack);
